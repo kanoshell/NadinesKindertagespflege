@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Nadines Kindertagespflege</string>
+    <string name="title_activity_kinder">Kinder</string>
+    <string name="buttonKinder">Kinder</string>
+    <string name="title_activity_filetest">filetest</string>
+    <string name="title_activity_drive_file_management">DriveFileManagement</string>
+    <string name="buttonVerträge">Verträge</string> />
+</resources>

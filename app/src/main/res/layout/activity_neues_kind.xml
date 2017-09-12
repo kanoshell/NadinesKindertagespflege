@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_neues_kind"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.daheim.nadineskindertagespflege.neuesKind">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Name"
+        android:id="@+id/Name"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Vorname"
+        android:id="@+id/Vorname"
+        android:layout_below="@+id/Name"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Vorname"
+        android:id="@+id/Geburtstagsspalte">
+
+    <TextView
+        android:text="Geburtstag:"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Vorname"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/Geburtstag" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:maxLength="2"
+        android:layout_below="@+id/Vorname"
+        android:layout_toRightOf="@+id/Geburtstag"
+        android:layout_toEndOf="@+id/Geburtstag"
+        android:id="@+id/Tag" />
+
+        <TextView
+            android:text="."
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Vorname"
+            android:layout_toRightOf="@+id/Tag"
+            android:layout_toEndOf="@+id/Tag"
+            android:id="@+id/datedot1" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:maxLength="2"
+        android:layout_below="@+id/Vorname"
+        android:layout_toRightOf="@+id/datedot1"
+        android:layout_toEndOf="@+id/datedot1"
+        android:id="@+id/Monat" />
+
+        <TextView
+            android:text="."
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Vorname"
+            android:layout_toRightOf="@+id/Monat"
+            android:layout_toEndOf="@+id/Monat"
+            android:id="@+id/datedot2" />
+
+
+        <TextView
+        android:text="20"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Vorname"
+        android:layout_toRightOf="@+id/datedot2"
+        android:layout_toEndOf="@+id/datedot2"
+        android:id="@+id/Jahranfang" />
+B
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:maxLength="2"
+        android:layout_below="@+id/Vorname"
+        android:layout_toRightOf="@+id/Jahranfang"
+        android:layout_toEndOf="@+id/Jahranfang"
+        android:id="@+id/Jahrende" />
+    </TableRow>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:hint="Allergien"
+        android:layout_below="@+id/Geburtstagsspalte"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/Allergien" />
+
+    <CheckBox
+        android:id="@+id/Aktiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Allergien"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:text="Aktiv?" />
+
+    <Button
+        android:id="@+id/übernehmen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="kindInDb"
+        android:text="übernehmen"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>
