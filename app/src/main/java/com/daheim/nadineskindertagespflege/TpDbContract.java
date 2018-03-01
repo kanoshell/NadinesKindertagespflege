@@ -31,4 +31,40 @@ public final class TpDbContract {
         protected static final String SQL_DROP_TABLE_KINDER =
                 "DROP TABLE IF EXISTS " + TpDbKinder.TABLE_NAME;
     }
+
+    public static class TpDbStundenplan implements BaseColumns {
+        public static final String TABLE_NAME = "TpDbStundenplan";
+        public static final String KindID = "KindID";
+        public static final String Tag = "Tag";
+        public static final String Uhrzeitvon = "Uhrzeitvon";
+        public static final String Uhrzeitbis = "Uhrzeitbis";
+
+        protected static final String SQL_CREATE_TABLE_STUNDENPLAN =
+                "CREATE TABLE " + TpDbStundenplan.TABLE_NAME + " (" +
+                        TpDbStundenplan._ID + " INTEGER PRIMARY KEY," +
+                        TpDbStundenplan.KindID + " TEXT," +
+                        TpDbStundenplan.Tag + " TEXT," +
+                        TpDbStundenplan.Uhrzeitvon + " TEXT," +
+                        TpDbStundenplan.Uhrzeitbis + " TEXT)";
+
+        protected static final String SQL_DROP_TABLE_STUNDENPLAN =
+                "DROP TABLE IF EXISTS " + TpDbStundenplan.TABLE_NAME;
+    }
+
+    public static class TpDbVertragslaufzeit implements BaseColumns {
+        public static final String TABLE_NAME = "TpDbVertragslaufzeit";
+        public static final String KindID = "KindID";
+        public static final String Datumvon = "Datumvon";
+        public static final String Datumbis = "Datumbis";
+
+        protected static final String SQL_CREATE_TABLE_VERTRAGSLAUFZEIT =
+                "CREATE TABLE " + TpDbVertragslaufzeit.TABLE_NAME + " (" +
+                        TpDbVertragslaufzeit._ID + " INTEGER PRIMARY KEY," +
+                        TpDbVertragslaufzeit.KindID + " TEXT," +
+                        TpDbVertragslaufzeit.Datumvon + " TEXT," +
+                        TpDbVertragslaufzeit.Datumbis + " TEXT)";
+
+        protected static final String SQL_DROP_TABLE_VERTRAGSLAUFZEIT =
+                "DROP TABLE IF EXISTS " + TpDbVertragslaufzeit.TABLE_NAME;
+    }
 }
