@@ -4,5 +4,7 @@
     <string name="buttonKinder">Kinder</string>
     <string name="title_activity_filetest">filetest</string>
     <string name="title_activity_drive_file_management">DriveFileManagement</string>
-    <string name="buttonVerträge">Verträge</string> />
+    <string name="buttonVerträge">Verträge</string>
+    <string name="title_activity_anwesenheit">Anwesenheit</string>
+    />
 </resources>

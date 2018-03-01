@@ -25,6 +25,10 @@
         <activity
             android:name=".DriveFileManagement"
             android:label="@string/title_activity_drive_file_management"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Anwesenheit"
+            android:label="@string/title_activity_anwesenheit"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
