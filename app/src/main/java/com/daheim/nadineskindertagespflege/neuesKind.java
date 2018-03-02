@@ -45,16 +45,16 @@ public class neuesKind extends Activity {
             }
 
         // ContentValues zur Übergabe erstellen
-        ContentValues values = new ContentValues();
-        values.put(TpDbContract.TpDbKinder.Name, name);
-        values.put(TpDbContract.TpDbKinder.Vorname, vorname);
-        values.put(TpDbContract.TpDbKinder.Geburtstag, geburtstag);
-        values.put(TpDbContract.TpDbKinder.Allergien, allergien);
-        values.put(TpDbContract.TpDbKinder.Active, active);
+        ContentValues kindvalues = new ContentValues();
+        kindvalues.put(TpDbContract.TpDbKinder.Name, name);
+        kindvalues.put(TpDbContract.TpDbKinder.Vorname, vorname);
+        kindvalues.put(TpDbContract.TpDbKinder.Geburtstag, geburtstag);
+        kindvalues.put(TpDbContract.TpDbKinder.Allergien, allergien);
+        kindvalues.put(TpDbContract.TpDbKinder.Active, active);
 
         // Instantiierung des helpers für die Kindertabelle
         TpDbTableKinderHelper kindhelper = new TpDbTableKinderHelper(getApplicationContext());
-        kindhelper.neueskind(values);
+        kindhelper.neueskind(kindvalues);
 
         // zurück zur View Kinder
         startActivity(new Intent(this,Kinder.class));

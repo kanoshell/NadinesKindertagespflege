@@ -16,7 +16,12 @@ public class MainActivity extends AppCompatActivity {
     public void startKinder(View view) {
         startActivity(new Intent(this,Kinder.class));
     }
+
     public void startDriveFileManagement(View view) {
         startActivity(new Intent(this,DriveFileManagement.class));
+    }
+
+    public void startAnwesenheit(View view) {
+        startActivity(new Intent(this,Anwesenheit.class));
     }
 }

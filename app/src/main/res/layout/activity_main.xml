@@ -23,4 +23,12 @@
         android:id="@+id/activity_drive_file_management"
         android:onClick="startDriveFileManagement"/>
 
+    <Button
+        android:text="Anwesenheit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_drive_file_management"
+        android:id="@+id/activity_anwesenheit"
+        android:onClick="startAnwesenheit"/>
+
 </RelativeLayout>
