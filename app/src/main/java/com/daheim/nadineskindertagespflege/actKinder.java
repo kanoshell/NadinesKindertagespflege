@@ -4,27 +4,18 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TableRow;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
-public class Kinder extends AppCompatActivity {
+public class actKinder extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +69,7 @@ public class Kinder extends AppCompatActivity {
                 kindbuttons[i].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent iduebergabe = new Intent(Kinder.this,anzeigeKind.class);
+                        Intent iduebergabe = new Intent(actKinder.this,actAnzeigeKind.class);
                         iduebergabe.putExtra(kindbuttons[finalI1].getText().toString(),aktivekindermap.get(kindbuttons[finalI1].getText().toString()));
                         startActivity(iduebergabe);
                     }
@@ -94,7 +85,7 @@ public class Kinder extends AppCompatActivity {
                 kindbuttons[i].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent iduebergabe = new Intent(Kinder.this,anzeigeKind.class);
+                        Intent iduebergabe = new Intent(actKinder.this,actAnzeigeKind.class);
                         iduebergabe.putExtra(kindbuttons[finalI].getText().toString(),aktivekindermap.get(kindbuttons[finalI].getText().toString()));
                         startActivity(iduebergabe);
                     }
@@ -112,7 +103,7 @@ public class Kinder extends AppCompatActivity {
         neuesKindButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Kinder.this,neuesKind.class));
+                startActivity(new Intent(actKinder.this,actNeuesKind.class));
             }
         });
     }

@@ -3,17 +3,13 @@ package com.daheim.nadineskindertagespflege;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class neuesKind extends Activity {
+public class actNeuesKind extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +52,8 @@ public class neuesKind extends Activity {
         TpDbTableKinderHelper kindhelper = new TpDbTableKinderHelper(getApplicationContext());
         kindhelper.neueskind(kindvalues);
 
-        // zurück zur View Kinder
-        startActivity(new Intent(this,Kinder.class));
+        // zurück zur View actKinder
+        startActivity(new Intent(this,actKinder.class));
     }
 
 }

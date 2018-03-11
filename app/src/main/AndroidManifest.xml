@@ -16,18 +16,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".neuesKind"
+            android:name=".actNeuesKind"
             android:label="Daten eingeben" />
         <activity
-            android:name=".Kinder"
+            android:name=".actKinder"
             android:label="Kinder" />
-        <activity android:name=".anzeigeKind" />
+        <activity android:name=".actAnzeigeKind" />
         <activity
             android:name=".DriveFileManagement"
             android:label="@string/title_activity_drive_file_management"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Anwesenheit"
+            android:name=".actAnwesenheit"
             android:label="@string/title_activity_anwesenheit"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

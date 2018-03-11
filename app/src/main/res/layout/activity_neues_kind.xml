@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_neues_kind"
     android:layout_width="match_parent"
@@ -9,7 +10,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.daheim.nadineskindertagespflege.neuesKind">
+    tools:context="com.daheim.nadineskindertagespflege.actNeuesKind">
 
     <EditText
         android:layout_width="wrap_content"
@@ -100,7 +101,7 @@
         android:layout_toRightOf="@+id/datedot2"
         android:layout_toEndOf="@+id/datedot2"
         android:id="@+id/Jahranfang" />
-B
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -128,22 +129,69 @@ B
         android:id="@+id/Aktiv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Allergien"
-        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/übernehmen"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
+        android:layout_marginBottom="50dp"
         android:text="Aktiv?" />
 
     <Button
         android:id="@+id/übernehmen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="kindInDb"
-        android:text="übernehmen"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="88dp"
+        android:onClick="kindInDb"
+        android:text="übernehmen" />
+
+    <EditText
+        android:id="@+id/lzstarttxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Allergien"
+        android:ems="10"
+        android:hint="Laufzeitanfang"
+        android:inputType="date" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/lzstartcal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Allergien"
+        android:layout_toEndOf="@+id/lzstarttxt"
+        android:layout_toRightOf="@+id/lzstarttxt"
+        android:clickable="true"
+        android:src="@android:drawable/ic_menu_my_calendar"
+        app:backgroundTint="@android:color/holo_green_light"
+        app:fabSize="mini" />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lzstarttxt"
+        android:ems="10"
+        android:hint="Laufzeitende"
+        android:inputType="date" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/lzendecal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lzstarttxt"
+        android:layout_toEndOf="@+id/lzstarttxt"
+        android:layout_toRightOf="@+id/lzstarttxt"
+        android:clickable="true"
+        android:contextClickable="false"
+        android:src="@android:drawable/ic_menu_my_calendar"
+        app:backgroundTint="@android:color/holo_red_light"
+        app:fabSize="mini" />
 
 
 </RelativeLayout>
