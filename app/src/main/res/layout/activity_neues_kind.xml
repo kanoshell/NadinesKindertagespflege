@@ -165,12 +165,14 @@
         android:layout_toEndOf="@+id/lzstarttxt"
         android:layout_toRightOf="@+id/lzstarttxt"
         android:clickable="true"
+        android:focusable="true"
         android:src="@android:drawable/ic_menu_my_calendar"
         app:backgroundTint="@android:color/holo_green_light"
-        app:fabSize="mini" />
+        app:fabSize="mini"
+        android:onClick="showDatePickerDialog"/>
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/lzendetxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -188,10 +190,11 @@
         android:layout_toEndOf="@+id/lzstarttxt"
         android:layout_toRightOf="@+id/lzstarttxt"
         android:clickable="true"
-        android:contextClickable="false"
+        android:focusable="true"
         android:src="@android:drawable/ic_menu_my_calendar"
         app:backgroundTint="@android:color/holo_red_light"
-        app:fabSize="mini" />
+        app:fabSize="mini"
+        android:onClick="showDatePickerDialog"/>
 
 
 </RelativeLayout>

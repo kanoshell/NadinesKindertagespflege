@@ -1,15 +1,18 @@
 package com.daheim.nadineskindertagespflege;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.DialogFragment;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class actNeuesKind extends Activity {
+public class actNeuesKind extends Activity implements DatePickerDialog.OnDateSetListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,8 @@ public class actNeuesKind extends Activity {
                geburtstag += ((TextView)findViewById(R.id.Jahranfang)).getText().toString();
                geburtstag += ((EditText)findViewById(R.id.Jahrende)).getText().toString();
         String allergien = ((EditText)findViewById(R.id.Allergien)).getText().toString();
+        String laufzeitanfang = ((EditText)findViewById(R.id.lzstarttxt)).getText().toString();
+        String laufzeitende = ((EditText)findViewById(R.id.lzendetxt)).getText().toString();
         String active = null;
             if (((CheckBox) findViewById(R.id.Aktiv)).isChecked()) {
                 active = "ja";
@@ -56,5 +61,18 @@ public class actNeuesKind extends Activity {
         startActivity(new Intent(this,actKinder.class));
     }
 
+    public void showDatePickerDialog(View view) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getFragmentManager(), "datePicker");
+    }
+
+    public void onDateSet(DatePicker view, int year, int month, int day) {
+        String datum = day+"."+month+"."+year;
+        setDate(datum);
+    }
+
+    public void setDate(final String datum) {
+        ((EditText)findViewById(R.id.lzstarttxt)).setText(datum);
+    }
 }
 
