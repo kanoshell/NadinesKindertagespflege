@@ -169,7 +169,7 @@
         android:src="@android:drawable/ic_menu_my_calendar"
         app:backgroundTint="@android:color/holo_green_light"
         app:fabSize="mini"
-        android:onClick="showDatePickerDialog"/>
+        android:onClick="setLZStartDatum"/>
 
     <EditText
         android:id="@+id/lzendetxt"
@@ -194,7 +194,7 @@
         android:src="@android:drawable/ic_menu_my_calendar"
         app:backgroundTint="@android:color/holo_red_light"
         app:fabSize="mini"
-        android:onClick="showDatePickerDialog"/>
+        android:onClick="setLZEndeDatum"/>
 
 
 </RelativeLayout>

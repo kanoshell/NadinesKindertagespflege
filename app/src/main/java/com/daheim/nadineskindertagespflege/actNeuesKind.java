@@ -61,18 +61,30 @@ public class actNeuesKind extends Activity implements DatePickerDialog.OnDateSet
         startActivity(new Intent(this,actKinder.class));
     }
 
-    public void showDatePickerDialog(View view) {
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getFragmentManager(), "datePicker");
-    }
+    //public void showDatePickerDialog(View view) {
+    //    DialogFragment newFragment = new DatePickerFragment();
+    //    newFragment.show(getFragmentManager(), "datePicker");
+    //}
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        String datum = day+"."+month+"."+year;
-        setDate(datum);
+        if(getFragmentManager().findFragmentByTag("LZStartPicker")!=null){
+            getFragmentManager().findFragmentByTag("LZStartPicker");
+            String datum = day+"."+month+1+"."+year;
+            ((EditText)findViewById(R.id.lzstarttxt)).setText(datum);
+        }
+        if(getFragmentManager().findFragmentByTag("LZEndePicker")!=null){
+            getFragmentManager().findFragmentByTag("LZEndePicker");
+            String datum = day+"."+month+1+"."+year;
+            ((EditText)findViewById(R.id.lzendetxt)).setText(datum);
+        }
     }
-
-    public void setDate(final String datum) {
-        ((EditText)findViewById(R.id.lzstarttxt)).setText(datum);
+    public void setLZStartDatum(View view) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getFragmentManager(), "LZStartPicker");
+    }
+    public void setLZEndeDatum(View view) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getFragmentManager(), "LZEndePicker");
     }
 }
 
