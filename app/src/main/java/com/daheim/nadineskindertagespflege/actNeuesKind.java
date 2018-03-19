@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
+
+import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat;
 
 public class actNeuesKind extends Activity implements DatePickerDialog.OnDateSetListener{
 
@@ -28,12 +30,7 @@ public class actNeuesKind extends Activity implements DatePickerDialog.OnDateSet
     public void kindInDb(View view) {
         String name = ((EditText)findViewById(R.id.Name)).getText().toString();
         String vorname = ((EditText)findViewById(R.id.Vorname)).getText().toString();
-        String geburtstag = ((EditText)findViewById(R.id.Tag)).getText().toString();
-               geburtstag += ((TextView)findViewById(R.id.datedot1)).getText().toString();
-               geburtstag += ((EditText)findViewById(R.id.Monat)).getText().toString();
-               geburtstag += ((TextView)findViewById(R.id.datedot2)).getText().toString();
-               geburtstag += ((TextView)findViewById(R.id.Jahranfang)).getText().toString();
-               geburtstag += ((EditText)findViewById(R.id.Jahrende)).getText().toString();
+        String geburtstag = ((EditText)findViewById(R.id.Geburtstag)).getText().toString();
         String allergien = ((EditText)findViewById(R.id.Allergien)).getText().toString();
         String laufzeitanfang = ((EditText)findViewById(R.id.lzstarttxt)).getText().toString();
         String laufzeitende = ((EditText)findViewById(R.id.lzendetxt)).getText().toString();
@@ -69,22 +66,40 @@ public class actNeuesKind extends Activity implements DatePickerDialog.OnDateSet
     public void onDateSet(DatePicker view, int year, int month, int day) {
         if(getFragmentManager().findFragmentByTag("LZStartPicker")!=null){
             getFragmentManager().findFragmentByTag("LZStartPicker");
-            String datum = day+"."+month+1+"."+year;
-            ((EditText)findViewById(R.id.lzstarttxt)).setText(datum);
+            GregorianCalendar datum = new GregorianCalendar(year,month,day);
+            ((EditText)findViewById(R.id.lzstarttxt)).setText(formatDate(datum));
         }
         if(getFragmentManager().findFragmentByTag("LZEndePicker")!=null){
             getFragmentManager().findFragmentByTag("LZEndePicker");
-            String datum = day+"."+month+1+"."+year;
-            ((EditText)findViewById(R.id.lzendetxt)).setText(datum);
+            GregorianCalendar datum = new GregorianCalendar(year,month,day);
+            ((EditText)findViewById(R.id.lzendetxt)).setText(formatDate(datum));
+        }
+        if(getFragmentManager().findFragmentByTag("GebTagPicker")!=null){
+            getFragmentManager().findFragmentByTag("GebTagPicker");
+            GregorianCalendar datum = new GregorianCalendar(year,month,day);
+            ((EditText)findViewById(R.id.Geburtstag)).setText(formatDate(datum));
         }
     }
+
+    private String formatDate(GregorianCalendar datum) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+        String datumstring=formatter.format(datum.getTime());
+        return datumstring;
+    }
+
     public void setLZStartDatum(View view) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "LZStartPicker");
     }
+
     public void setLZEndeDatum(View view) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "LZEndePicker");
+    }
+
+    public void setGebTagDatum(View view) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getFragmentManager(), "GebTagPicker");
     }
 }
 

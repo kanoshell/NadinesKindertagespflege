@@ -35,90 +35,37 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Vorname"
-        android:id="@+id/Geburtstagsspalte">
-
-    <TextView
-        android:text="Geburtstag:"
-        android:textSize="18sp"
+    <EditText
+        android:id="@+id/Geburtstag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Vorname"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/Geburtstag" />
+        android:layout_below="@+id/Vorname"
+        android:ems="10"
+        android:hint="Geburtstag"
+        android:inputType="date" />
 
-    <EditText
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/gebtagcal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:maxLength="2"
         android:layout_below="@+id/Vorname"
-        android:layout_toRightOf="@+id/Geburtstag"
         android:layout_toEndOf="@+id/Geburtstag"
-        android:id="@+id/Tag" />
-
-        <TextView
-            android:text="."
-            android:textSize="18sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/Vorname"
-            android:layout_toRightOf="@+id/Tag"
-            android:layout_toEndOf="@+id/Tag"
-            android:id="@+id/datedot1" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:maxLength="2"
-        android:layout_below="@+id/Vorname"
-        android:layout_toRightOf="@+id/datedot1"
-        android:layout_toEndOf="@+id/datedot1"
-        android:id="@+id/Monat" />
-
-        <TextView
-            android:text="."
-            android:textSize="18sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/Vorname"
-            android:layout_toRightOf="@+id/Monat"
-            android:layout_toEndOf="@+id/Monat"
-            android:id="@+id/datedot2" />
-
-
-        <TextView
-        android:text="20"
-        android:textSize="18sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Vorname"
-        android:layout_toRightOf="@+id/datedot2"
-        android:layout_toEndOf="@+id/datedot2"
-        android:id="@+id/Jahranfang" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:maxLength="2"
-        android:layout_below="@+id/Vorname"
-        android:layout_toRightOf="@+id/Jahranfang"
-        android:layout_toEndOf="@+id/Jahranfang"
-        android:id="@+id/Jahrende" />
-    </TableRow>
+        android:layout_toRightOf="@+id/Geburtstag"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@android:drawable/ic_menu_my_calendar"
+        app:backgroundTint="@android:color/holo_blue_light"
+        app:fabSize="mini"
+        android:onClick="setGebTagDatum"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:hint="Allergien"
-        android:layout_below="@+id/Geburtstagsspalte"
+        android:layout_below="@+id/Geburtstag"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
