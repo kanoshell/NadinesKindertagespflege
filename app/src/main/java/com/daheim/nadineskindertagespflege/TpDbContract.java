@@ -53,14 +53,14 @@ public final class TpDbContract {
 
     public static class TpDbVertragslaufzeit implements BaseColumns {
         public static final String TABLE_NAME = "TpDbVertragslaufzeit";
-        //public static final String KindID = "KindID";
+        public static final String KindID = "KindID";
         public static final String Datumvon = "Datumvon";
         public static final String Datumbis = "Datumbis";
 
         protected static final String SQL_CREATE_TABLE_VERTRAGSLAUFZEIT =
                 "CREATE TABLE " + TpDbVertragslaufzeit.TABLE_NAME + " (" +
                         TpDbVertragslaufzeit._ID + " INTEGER PRIMARY KEY," +
-                        //TpDbVertragslaufzeit.KindID + " TEXT," +
+                        TpDbVertragslaufzeit.KindID + " TEXT," +
                         TpDbVertragslaufzeit.Datumvon + " TEXT," +
                         TpDbVertragslaufzeit.Datumbis + " TEXT)";
 

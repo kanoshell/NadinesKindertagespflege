@@ -25,7 +25,7 @@ public class actKinder extends AppCompatActivity {
         //setSupportActionBar(toolbar);
 
         // holen des cursors für die anzeige der kinder
-        TpDbTableKinderHelper kindviewer = new TpDbTableKinderHelper(getApplicationContext());
+        TpDbTableHelper kindviewer = new TpDbTableHelper(getApplicationContext());
         Cursor kinder = kindviewer.anzeigeKinder();
 
         // Bilden der Map zur Anzeige durch Iteration durch Cursor

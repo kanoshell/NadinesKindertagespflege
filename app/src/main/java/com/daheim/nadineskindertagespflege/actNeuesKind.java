@@ -16,6 +16,10 @@ import java.text.SimpleDateFormat;
 
 public class actNeuesKind extends Activity implements DatePickerDialog.OnDateSetListener{
 
+    long KindID;
+    long VertrLZID;
+    long StdPlanID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,18 +54,19 @@ public class actNeuesKind extends Activity implements DatePickerDialog.OnDateSet
         kindvalues.put(TpDbContract.TpDbKinder.Allergien, allergien);
         kindvalues.put(TpDbContract.TpDbKinder.Active, active);
 
+        // Instantiierung des helpers für die Kindertabelle
+        TpDbTableHelper kindhelper = new TpDbTableHelper(getApplicationContext());
+        this.KindID = kindhelper.neuesKind(kindvalues);
+
         // ContentValues zur Übergabe erstellen
         ContentValues vertragslaufzeitvalues = new ContentValues();
+        vertragslaufzeitvalues.put(TpDbContract.TpDbVertragslaufzeit.KindID,this.KindID);
         vertragslaufzeitvalues.put(TpDbContract.TpDbVertragslaufzeit.Datumvon,laufzeitanfang);
         vertragslaufzeitvalues.put(TpDbContract.TpDbVertragslaufzeit.Datumbis,laufzeitende);
 
-        // Instantiierung des helpers für die Kindertabelle
-        //TpDbTableKinderHelper kindhelper = new TpDbTableKinderHelper(getApplicationContext());
-        //kindhelper.neueskind(kindvalues);
-
         // Instantiierung des helpers für die Vertragslaufzeittabelle
-        TpDbTableVertragsLZHelper vertragsLZHelper = new TpDbTableVertragsLZHelper(getApplicationContext());
-        vertragsLZHelper.neuevertragslz(vertragslaufzeitvalues);
+        TpDbTableHelper vertragsLZHelper = new TpDbTableHelper(getApplicationContext());
+        this.VertrLZID = vertragsLZHelper.neueVertrLZ(vertragslaufzeitvalues);
 
         // zurück zur View actKinder
         startActivity(new Intent(this,actKinder.class));

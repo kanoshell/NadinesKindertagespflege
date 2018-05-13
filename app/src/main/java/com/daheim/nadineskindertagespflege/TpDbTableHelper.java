@@ -8,29 +8,31 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 
-public class TpDbTableVertragsLZHelper extends SQLiteOpenHelper {
+public class TpDbTableHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = TpDbContract.DATABASE_VERSION;
     public static final String DATABASE_NAME = TpDbContract.DATABASE_NAME;
 
-    public TpDbTableVertragsLZHelper(Context context) {
+    public TpDbTableHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL(TpDbContract.TpDbKinder.SQL_CREATE_TABLE_KINDER);
         db.execSQL(TpDbContract.TpDbVertragslaufzeit.SQL_CREATE_TABLE_VERTRAGSLAUFZEIT);
+        db.execSQL(TpDbContract.TpDbStundenplan.SQL_CREATE_TABLE_STUNDENPLAN);
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // This database is only a cache for online data, so its upgrade policy is
         // to simply to discard the data and start over
-        db.execSQL(TpDbContract.TpDbVertragslaufzeit.SQL_DROP_TABLE_VERTRAGSLAUFZEIT);
+        db.execSQL(TpDbContract.TpDbKinder.SQL_DROP_TABLE_KINDER);
         onCreate(db);
     }
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    public void neuevertragslz(ContentValues values) {
-    SQLiteDatabase db= null;
+    public long neuesKind(ContentValues values) {
+    SQLiteDatabase db = null;
     // Gets the data repository in write mode
         try {
         db = this.getWritableDatabase();
@@ -38,13 +40,38 @@ public class TpDbTableVertragsLZHelper extends SQLiteOpenHelper {
         Log.e("dbcreate", "onCreate: ", e);
         e.printStackTrace();
     }
-
     // Insert the new row, returning the primary key value of the new row
-    long newRowId = db.insert(TpDbContract.TpDbVertragslaufzeit.TABLE_NAME, null, values);
-    //System.out.println(newRowId);
+        return db.insert(TpDbContract.TpDbKinder.TABLE_NAME, null, values);
     }
 
-    public Cursor anzeigeVertragsLZ() {
+    public long neueVertrLZ(ContentValues values) {
+        SQLiteDatabase db = null;
+        // Gets the data repository in write mode
+        try {
+            db = this.getWritableDatabase();
+        } catch (Exception e) {
+            Log.e("dbcreate", "onCreate: ", e);
+            e.printStackTrace();
+        }
+        // Insert the new row, returning the primary key value of the new row
+        return db.insert(TpDbContract.TpDbVertragslaufzeit.TABLE_NAME,null,values);
+    }
+
+    public long neuerStdPlan(ContentValues values) {
+        SQLiteDatabase db = null;
+        // Gets the data repository in write mode
+        try {
+            db = this.getWritableDatabase();
+        } catch (Exception e) {
+            Log.e("dbcreate", "onCreate: ", e);
+            e.printStackTrace();
+        }
+
+        // Insert the new row, returning the primary key value of the new row
+        return db.insert(TpDbContract.TpDbStundenplan.TABLE_NAME, null, values);
+    }
+
+    public Cursor anzeigeKinder() {
         SQLiteDatabase db = null;
         // Gets the data repository in read mode
         try {
@@ -56,21 +83,21 @@ public class TpDbTableVertragsLZHelper extends SQLiteOpenHelper {
     // Define a projection that specifies which columns from the database
     // you will actually use after this query.
         String[] projection = {
-                TpDbContract.TpDbVertragslaufzeit.Datumvon,
-                TpDbContract.TpDbVertragslaufzeit.Datumbis,
-                TpDbContract.TpDbVertragslaufzeit._ID
+                TpDbContract.TpDbKinder.Vorname,
+                TpDbContract.TpDbKinder.Name,
+                TpDbContract.TpDbKinder._ID
         };
 
-    // Filter results alle
-        String selection = "*";
-        String[] selectionArgs = {};
+    // Filter results WHERE "Active" = 'ja'
+        String selection = TpDbContract.TpDbKinder.Active + " = ?";
+        String[] selectionArgs = { "ja" };
 
     // How you want the results sorted in the resulting Cursor
         String sortOrder =
-                TpDbContract.TpDbVertragslaufzeit.Datumvon + " DESC";
+                TpDbContract.TpDbKinder.Vorname + " DESC";
 
         Cursor cursor = db.query(
-                TpDbContract.TpDbVertragslaufzeit.TABLE_NAME,       // The table to query
+                TpDbContract.TpDbKinder.TABLE_NAME,       // The table to query
                 projection,                               // The columns to return
                 selection,                                // The columns for the WHERE clause
                 selectionArgs,                            // The values for the WHERE clause
@@ -81,7 +108,7 @@ public class TpDbTableVertragsLZHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    /*public Cursor anzeigeGewaeltesKind(String _ID) {
+    public Cursor anzeigeGewaeltesKind(String _ID) {
         String eindeutid = _ID;
         SQLiteDatabase db = null;
         // Gets the data repository in read mode
@@ -112,5 +139,5 @@ public class TpDbTableVertragsLZHelper extends SQLiteOpenHelper {
                 sortOrder                                 // The sort order
         );
         return cursor;
-    }*/
+    }
 }

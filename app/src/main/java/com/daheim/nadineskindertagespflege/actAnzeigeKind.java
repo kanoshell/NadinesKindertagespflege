@@ -1,13 +1,9 @@
 package com.daheim.nadineskindertagespflege;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -16,7 +12,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class actAnzeigeKind extends AppCompatActivity {
 
@@ -32,7 +27,7 @@ public class actAnzeigeKind extends AppCompatActivity {
         setTitle(iduebergabe.getExtras().keySet().toArray()[0].toString());
 
         //Holen des Cursors und Mitgabe der eindeutigen ID in der DB (Value aus Bundle vom einzigen Key)
-        TpDbTableKinderHelper einzelkindview = new TpDbTableKinderHelper(getApplicationContext());
+        TpDbTableHelper einzelkindview = new TpDbTableHelper(getApplicationContext());
         Cursor anzeigekind = einzelkindview.anzeigeGewaeltesKind(iduebergabe.getStringExtra(iduebergabe.getExtras().keySet().toArray()[0].toString()));
 
         // Bilden der Map zur Anzeige durch Iteration durch Cursor
