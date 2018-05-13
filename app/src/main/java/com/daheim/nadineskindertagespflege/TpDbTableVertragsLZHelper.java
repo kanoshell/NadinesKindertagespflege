@@ -8,33 +8,29 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 
-public class TpDbTableKinderHelper extends SQLiteOpenHelper {
+public class TpDbTableVertragsLZHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = TpDbContract.DATABASE_VERSION;
     public static final String DATABASE_NAME = TpDbContract.DATABASE_NAME;
 
-    public TpDbTableKinderHelper(Context context) {
+    public TpDbTableVertragsLZHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(TpDbContract.TpDbKinder.SQL_CREATE_TABLE_KINDER);
         db.execSQL(TpDbContract.TpDbVertragslaufzeit.SQL_CREATE_TABLE_VERTRAGSLAUFZEIT);
-        db.execSQL(TpDbContract.TpDbStundenplan.SQL_CREATE_TABLE_STUNDENPLAN);
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // This database is only a cache for online data, so its upgrade policy is
         // to simply to discard the data and start over
-        db.execSQL(TpDbContract.TpDbKinder.SQL_DROP_TABLE_KINDER);
+        db.execSQL(TpDbContract.TpDbVertragslaufzeit.SQL_DROP_TABLE_VERTRAGSLAUFZEIT);
         onCreate(db);
     }
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    public void neueskind(ContentValues values) {
-    // Instantiierung des helpers für die Kindertabelle
-    //TpDbTableKinderHelper kindhelper = new TpDbTableKinderHelper();
-    SQLiteDatabase db = null;
+    public void neuevertragslz(ContentValues values) {
+    SQLiteDatabase db= null;
     // Gets the data repository in write mode
         try {
         db = this.getWritableDatabase();
@@ -44,11 +40,11 @@ public class TpDbTableKinderHelper extends SQLiteOpenHelper {
     }
 
     // Insert the new row, returning the primary key value of the new row
-    long newRowId = db.insert(TpDbContract.TpDbKinder.TABLE_NAME, null, values);
+    long newRowId = db.insert(TpDbContract.TpDbVertragslaufzeit.TABLE_NAME, null, values);
     //System.out.println(newRowId);
     }
 
-    public Cursor anzeigeKinder() {
+    public Cursor anzeigeVertragsLZ() {
         SQLiteDatabase db = null;
         // Gets the data repository in read mode
         try {
@@ -60,21 +56,21 @@ public class TpDbTableKinderHelper extends SQLiteOpenHelper {
     // Define a projection that specifies which columns from the database
     // you will actually use after this query.
         String[] projection = {
-                TpDbContract.TpDbKinder.Vorname,
-                TpDbContract.TpDbKinder.Name,
-                TpDbContract.TpDbKinder._ID
+                TpDbContract.TpDbVertragslaufzeit.Datumvon,
+                TpDbContract.TpDbVertragslaufzeit.Datumbis,
+                TpDbContract.TpDbVertragslaufzeit._ID
         };
 
-    // Filter results WHERE "Active" = 'ja'
-        String selection = TpDbContract.TpDbKinder.Active + " = ?";
-        String[] selectionArgs = { "ja" };
+    // Filter results alle
+        String selection = "*";
+        String[] selectionArgs = {};
 
     // How you want the results sorted in the resulting Cursor
         String sortOrder =
-                TpDbContract.TpDbKinder.Vorname + " DESC";
+                TpDbContract.TpDbVertragslaufzeit.Datumvon + " DESC";
 
         Cursor cursor = db.query(
-                TpDbContract.TpDbKinder.TABLE_NAME,       // The table to query
+                TpDbContract.TpDbVertragslaufzeit.TABLE_NAME,       // The table to query
                 projection,                               // The columns to return
                 selection,                                // The columns for the WHERE clause
                 selectionArgs,                            // The values for the WHERE clause
@@ -85,7 +81,7 @@ public class TpDbTableKinderHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Cursor anzeigeGewaeltesKind(String _ID) {
+    /*public Cursor anzeigeGewaeltesKind(String _ID) {
         String eindeutid = _ID;
         SQLiteDatabase db = null;
         // Gets the data repository in read mode
@@ -116,5 +112,5 @@ public class TpDbTableKinderHelper extends SQLiteOpenHelper {
                 sortOrder                                 // The sort order
         );
         return cursor;
-    }
+    }*/
 }

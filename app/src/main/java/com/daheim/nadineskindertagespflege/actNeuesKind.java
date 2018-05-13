@@ -50,9 +50,18 @@ public class actNeuesKind extends Activity implements DatePickerDialog.OnDateSet
         kindvalues.put(TpDbContract.TpDbKinder.Allergien, allergien);
         kindvalues.put(TpDbContract.TpDbKinder.Active, active);
 
+        // ContentValues zur Übergabe erstellen
+        ContentValues vertragslaufzeitvalues = new ContentValues();
+        vertragslaufzeitvalues.put(TpDbContract.TpDbVertragslaufzeit.Datumvon,laufzeitanfang);
+        vertragslaufzeitvalues.put(TpDbContract.TpDbVertragslaufzeit.Datumbis,laufzeitende);
+
         // Instantiierung des helpers für die Kindertabelle
-        TpDbTableKinderHelper kindhelper = new TpDbTableKinderHelper(getApplicationContext());
-        kindhelper.neueskind(kindvalues);
+        //TpDbTableKinderHelper kindhelper = new TpDbTableKinderHelper(getApplicationContext());
+        //kindhelper.neueskind(kindvalues);
+
+        // Instantiierung des helpers für die Vertragslaufzeittabelle
+        TpDbTableVertragsLZHelper vertragsLZHelper = new TpDbTableVertragsLZHelper(getApplicationContext());
+        vertragsLZHelper.neuevertragslz(vertragslaufzeitvalues);
 
         // zurück zur View actKinder
         startActivity(new Intent(this,actKinder.class));
