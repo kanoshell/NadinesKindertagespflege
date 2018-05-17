@@ -50,6 +50,52 @@ public class actNeuesKind extends Activity
             else {
                 active = "nein";
             }
+        String tage = null;
+        if (((CheckBox) findViewById(R.id.mon)).isChecked()) {
+            tage = "mo";
+        }
+        if (((CheckBox) findViewById(R.id.die)).isChecked()) {
+            if(tage==null){
+                tage="di";
+            }else{
+                tage=tage+";di";
+            }
+        }
+        if (((CheckBox) findViewById(R.id.mit)).isChecked()) {
+            if(tage==null){
+                tage="mi";
+            }else{
+                tage=tage+";mi";
+            }
+        }
+        if (((CheckBox) findViewById(R.id.don)).isChecked()) {
+            if (tage == null) {
+                tage = "do";
+            } else {
+                tage = tage + ";do";
+            }
+        }
+        if (((CheckBox) findViewById(R.id.fre)).isChecked()) {
+            if(tage==null){
+                tage="fr";
+            }else{
+                tage=tage+";fr";
+            }
+        }
+        if (((CheckBox) findViewById(R.id.sam)).isChecked()) {
+            if(tage==null){
+                tage="sa";
+            }else{
+                tage=tage+";sa";
+            }
+        }
+        if (((CheckBox) findViewById(R.id.son)).isChecked()) {
+            if(tage==null){
+                tage="so";
+            }else{
+                tage=tage+";so";
+            }
+        }
 
         // ContentValues zur Übergabe erstellen
         ContentValues kindvalues = new ContentValues();
@@ -78,6 +124,7 @@ public class actNeuesKind extends Activity
         stundenplanvalues.put(TpDbContract.TpDbStundenplan.KindID,this.KindID);
         stundenplanvalues.put(TpDbContract.TpDbStundenplan.Uhrzeitvon,uhrzeitvon);
         stundenplanvalues.put(TpDbContract.TpDbStundenplan.Uhrzeitbis,uhrzeitbis);
+        stundenplanvalues.put(TpDbContract.TpDbStundenplan.Tag,tage);
 
         // Instantiierung des helpers für die Stundenplantabelle
         TpDbTableHelper stundenplanHelper = new TpDbTableHelper(getApplicationContext());

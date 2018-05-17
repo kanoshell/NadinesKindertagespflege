@@ -76,10 +76,10 @@
         android:id="@+id/Aktiv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/übernehmen"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/Name"
+        android:layout_alignLeft="@+id/Name"
+        android:layout_marginBottom="99dp"
         android:text="Aktiv?" />
 
     <Button
@@ -87,9 +87,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="88dp"
+        android:layout_alignStart="@+id/Name"
+        android:layout_alignLeft="@+id/Name"
+        android:layout_marginBottom="27dp"
         android:onClick="kindInDb"
         android:text="übernehmen" />
 
@@ -192,5 +192,73 @@
         app:backgroundTint="@android:color/holo_red_light"
         app:fabSize="mini"
         android:onClick="setUZEnde"/>
+
+    <CheckBox
+        android:id="@+id/mon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/Name"
+        android:layout_alignLeft="@+id/Name"
+        android:layout_below="@+id/uhrzeitende"
+        android:checked="true"
+        android:text="Mo" />
+
+    <CheckBox
+        android:id="@+id/die"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uhrzeitende"
+        android:layout_toEndOf="@+id/mon"
+        android:layout_toRightOf="@+id/mon"
+        android:checked="true"
+        android:text="Di" />
+
+    <CheckBox
+        android:id="@+id/mit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uhrzeitende"
+        android:layout_toEndOf="@+id/die"
+        android:layout_toRightOf="@+id/die"
+        android:checked="true"
+        android:text="Mi" />
+
+    <CheckBox
+        android:id="@+id/don"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uhrzeitende"
+        android:layout_toEndOf="@+id/mit"
+        android:layout_toRightOf="@+id/mit"
+        android:checked="true"
+        android:text="Do" />
+
+    <CheckBox
+        android:id="@+id/fre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uhrzeitende"
+        android:layout_toEndOf="@+id/don"
+        android:layout_toRightOf="@+id/don"
+        android:checked="true"
+        android:text="Fr" />
+
+    <CheckBox
+        android:id="@+id/sam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uhrzeitende"
+        android:layout_toEndOf="@+id/fre"
+        android:layout_toRightOf="@+id/fre"
+        android:text="Sa" />
+
+    <CheckBox
+        android:id="@+id/son"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uhrzeitende"
+        android:layout_toEndOf="@+id/sam"
+        android:layout_toRightOf="@+id/sam"
+        android:text="So" />
 
 </RelativeLayout>
