@@ -3,6 +3,7 @@ package com.daheim.nadineskindertagespflege;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;
+import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +11,13 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 
 import java.util.GregorianCalendar;
 import java.text.SimpleDateFormat;
 
-public class actNeuesKind extends Activity implements DatePickerDialog.OnDateSetListener{
+public class actNeuesKind extends Activity
+        implements DatePickerDialog.OnDateSetListener,TimePickerDialog.OnTimeSetListener{
 
     long KindID;
     long VertrLZID;
@@ -95,6 +98,35 @@ public class actNeuesKind extends Activity implements DatePickerDialog.OnDateSet
         }
     }
 
+    public void onTimeSet(TimePicker view,int hourOfDay,int minutes) {
+        if (getFragmentManager().findFragmentByTag("UZStartPicker") != null) {
+            getFragmentManager().findFragmentByTag("UZStartPicker");
+            String stunden = String.valueOf(hourOfDay);
+            String minuten = String.valueOf((minutes));
+            if (stunden.length()==1){
+                stunden="0"+stunden;
+            }
+            if (minuten.length()==1){
+                minuten="0"+minuten;
+            }
+            String uhrzeit = stunden+":"+minuten;
+            ((EditText) findViewById(R.id.uhrzeitstart)).setText(uhrzeit);
+        }
+        if (getFragmentManager().findFragmentByTag("UZEndePicker") != null) {
+            getFragmentManager().findFragmentByTag("UZEndePicker");
+            String stunden = String.valueOf(hourOfDay);
+            String minuten = String.valueOf((minutes));
+            if (stunden.length()==1){
+                stunden="0"+stunden;
+            }
+            if (minuten.length()==1){
+                minuten="0"+minuten;
+            }
+            String uhrzeit = stunden+":"+minuten;
+            ((EditText) findViewById(R.id.uhrzeitende)).setText(uhrzeit);
+        }
+    }
+
     private String formatDate(GregorianCalendar datum) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
         String datumstring=formatter.format(datum.getTime());
@@ -115,5 +147,16 @@ public class actNeuesKind extends Activity implements DatePickerDialog.OnDateSet
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "GebTagPicker");
     }
+
+    public void setUZStart(View view) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getFragmentManager(), "UZStartPicker");
+    }
+
+    public void setUZEnde(View view) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getFragmentManager(), "UZEndePicker");
+    }
+
 }
 

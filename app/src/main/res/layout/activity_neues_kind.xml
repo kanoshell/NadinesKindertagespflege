@@ -143,5 +143,54 @@
         app:fabSize="mini"
         android:onClick="setLZEndeDatum"/>
 
+    <EditText
+        android:id="@+id/uhrzeitstart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lzendetxt"
+        android:ems="10"
+        android:hint="Uhrzeit Morgens"
+        android:inputType="time" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/uzstartclock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lzendecal"
+        android:layout_toEndOf="@+id/uhrzeitstart"
+        android:layout_toRightOf="@+id/uhrzeitstart"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@android:drawable/ic_media_play"
+        app:backgroundTint="@android:color/holo_green_light"
+        app:fabSize="mini"
+        android:onClick="setUZStart"/>
+
+    <EditText
+        android:id="@+id/uhrzeitende"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/uhrzeitstart"
+        android:ems="10"
+        android:hint="Uhrzeit Mittags"
+        android:inputType="time" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/uzsendeclock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uzstartclock"
+        android:layout_toEndOf="@+id/uhrzeitende"
+        android:layout_toRightOf="@+id/uhrzeitende"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@android:drawable/ic_media_pause"
+        app:backgroundTint="@android:color/holo_red_light"
+        app:fabSize="mini"
+        android:onClick="setUZEnde"/>
 
 </RelativeLayout>
