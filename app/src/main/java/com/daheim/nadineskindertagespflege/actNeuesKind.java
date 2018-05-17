@@ -41,6 +41,8 @@ public class actNeuesKind extends Activity
         String allergien = ((EditText)findViewById(R.id.Allergien)).getText().toString();
         String laufzeitanfang = ((EditText)findViewById(R.id.lzstarttxt)).getText().toString();
         String laufzeitende = ((EditText)findViewById(R.id.lzendetxt)).getText().toString();
+        String uhrzeitvon = ((EditText)findViewById(R.id.uhrzeitstart)).getText().toString();
+        String uhrzeitbis = ((EditText)findViewById(R.id.uhrzeitende)).getText().toString();
         String active = null;
             if (((CheckBox) findViewById(R.id.Aktiv)).isChecked()) {
                 active = "ja";
@@ -70,6 +72,16 @@ public class actNeuesKind extends Activity
         // Instantiierung des helpers für die Vertragslaufzeittabelle
         TpDbTableHelper vertragsLZHelper = new TpDbTableHelper(getApplicationContext());
         this.VertrLZID = vertragsLZHelper.neueVertrLZ(vertragslaufzeitvalues);
+
+        // ContentValues zur Übergabe erstellen
+        ContentValues stundenplanvalues = new ContentValues();
+        stundenplanvalues.put(TpDbContract.TpDbStundenplan.KindID,this.KindID);
+        stundenplanvalues.put(TpDbContract.TpDbStundenplan.Uhrzeitvon,uhrzeitvon);
+        stundenplanvalues.put(TpDbContract.TpDbStundenplan.Uhrzeitbis,uhrzeitbis);
+
+        // Instantiierung des helpers für die Stundenplantabelle
+        TpDbTableHelper stundenplanHelper = new TpDbTableHelper(getApplicationContext());
+        this.StdPlanID = stundenplanHelper.neuerStdPlan(stundenplanvalues);
 
         // zurück zur View actKinder
         startActivity(new Intent(this,actKinder.class));
