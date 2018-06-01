@@ -6,5 +6,9 @@
     <string name="title_activity_drive_file_management">DriveFileManagement</string>
     <string name="buttonVerträge">Verträge</string>
     <string name="title_activity_anwesenheit">Anwesenheit</string>
+    <string name="title_activity_act_neue_vertragslaufzeit">neue Vertragslaufzeit</string>
+    <string name="title_activity_act_vlzbot_nav">actVLZBotNav</string>
+    <string name="title_activity_act_kind_bot_nav">Kind</string>
+    <string name="title_activity_act_neuer_std_plan_bot_nav">actNeuerStdPlanBotNav</string>
     />
 </resources>
