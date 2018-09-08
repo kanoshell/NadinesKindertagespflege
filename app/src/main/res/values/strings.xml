@@ -9,6 +9,12 @@
     <string name="title_activity_act_neue_vertragslaufzeit">neue Vertragslaufzeit</string>
     <string name="title_activity_act_vlzbot_nav">actVLZBotNav</string>
     <string name="title_activity_act_kind_bot_nav">Kind</string>
+    <string name="title_home">dehaam</string>
+    <string name="title_dashboard">dashb</string>
+    <string name="title_notifications">notis</string>
     <string name="title_activity_act_neuer_std_plan_bot_nav">actNeuerStdPlanBotNav</string>
+    <string name="navigation">navi</string>
+    <string name="navigation_neuesKind">newKid</string>
+    <string name="activity_act_neueskind_bot_nav">viel zu lang</string>
     />
 </resources>
